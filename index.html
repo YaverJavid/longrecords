@@ -13,19 +13,19 @@
             padding: 0;
             background-color: #f4f4f4;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
+        
         .article-list {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
         }
-
+        
         .article-card {
             background-color: #fff;
             padding: 20px;
@@ -34,34 +34,34 @@
             box-sizing: border-box;
             transition: transform 0.2s;
         }
-
+        
         .article-card:hover {
             transform: translateY(-5px);
         }
-
+        
         .article-title {
             font-size: 1.2em;
             font-weight: bold;
             margin-bottom: 10px;
         }
-
+        
         .article-meta {
             font-size: 0.9em;
             color: #555;
             margin-bottom: 15px;
         }
-
+        
         .article-category {
             font-size: 0.9em;
             color: #888;
         }
-
+        
         @media (max-width: 768px) {
             .article-card {
                 flex: 1 1 calc(50% - 40px);
             }
         }
-
+        
         @media (max-width: 480px) {
             .article-card {
                 flex: 1 1 100%;
@@ -101,9 +101,20 @@
                 <div class="article-meta">Author: Yaver Javid | Date: July 02, 2024</div>
                 <div class="article-category">Category: Philosophical</div>
             </div>
+            <div class="article-card">
+                <div class="article-title">Naat</div>
+                <div class="article-meta">Author: Yaver Javid | Date: February 16, 2026</div>
+                <div class="article-category">Category: Urdu Poetry</div>
+            </div>
+            <div class="article-card">
+                <div class="article-title">Kashmiri Ghazal 1</div>
+                <div class="article-meta">Author: Yaver Javid | Date: February 16, 2026</div>
+                <div class="article-category">Category: Kashmiri Poetry</div>
+            </div>
         </div>
         <script src="main.js"></script>
     </div>
-
+    
 </body>
+
 </html>
