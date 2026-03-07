@@ -6,10 +6,17 @@ body {
     /* font-family: fatface; */
 }
 
-@font-face {
+/* @font-face {
     font-family: fatface;
-    src: url("AbrilFatface-Regular.ttf");
-}
+    src: url("../fonts/AbrilFatface-Regular.ttf");
+} */
+/* 
+@font-face {
+    font-family: urdu;
+    src: url("../fonts/NotoNastaliqUrdu-VariableFont_wght.ttf");
+} */
+
+
 
 .container {
     max-width: 800px;
@@ -26,7 +33,7 @@ body {
     font-size: 1.5em;
     font-weight: bold;
     margin-bottom: 10px;
-    font-family: fatface;
+    /* font-family: fatface; */
 }
 
 .author {
@@ -42,4 +49,8 @@ body {
 
 .poetry{
     text-align: center;
+}
+
+.urdu{
+
 }
