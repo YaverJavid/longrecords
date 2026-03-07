@@ -10,11 +10,7 @@ body {
     font-family: fatface;
     src: url("../fonts/AbrilFatface-Regular.ttf");
 } */
-/* 
-@font-face {
-    font-family: urdu;
-    src: url("../fonts/NotoNastaliqUrdu-VariableFont_wght.ttf");
-} */
+
 
 
 
@@ -47,10 +43,7 @@ body {
     line-height: 1.6;
 }
 
-.poetry{
+.poetry {
+
     text-align: center;
-}
-
-.urdu{
-
 }
