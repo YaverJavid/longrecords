@@ -9,7 +9,9 @@
 </head>
 
 <body>
+
   <div id="phone">
+    <img src="assets/title-pashmina.jpg" class="title" width="100%" style="user-select: none">
     <div id="poem-container">
       <div class="poem">
         <p>
@@ -36,7 +38,7 @@
     </div>
     <div class="control">
       <div class="button"></div>
-      <span></span>
+      <span style="user-select: none"></span>
       <div class="button right"></div>
     </div>
   </div>
@@ -55,6 +57,7 @@
       padding: 16px;
       box-sizing: border-box;
       gap: 8px;
+      align-items: center;
     }
     
     #poem-container {
@@ -64,6 +67,7 @@
       background-size: 100% 100%;
       background-repeat: no-repeat;
       display: flex;
+      width: 100%;
     }
     
     .control {
@@ -108,7 +112,6 @@
     
     * {
       
-      line-height-step: 12px;
     }
     
     p {
@@ -284,6 +287,7 @@
       
       const wrapper = document.createElement("div")
       wrapper.className = "poem"
+      
       
       page.forEach(([l1, l2]) => {
         const p = document.createElement("p")
