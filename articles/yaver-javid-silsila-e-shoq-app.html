@@ -42,13 +42,17 @@
       <div class="button right"></div>
     </div>
   </div>
-  
+
   <style>
     body {
+      width: 100%;
       margin: 0;
       padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    
+
     #phone {
       /* background: red; */
       width: 100%;
@@ -58,8 +62,9 @@
       box-sizing: border-box;
       gap: 8px;
       align-items: center;
+      max-width: 600px;
     }
-    
+
     #poem-container {
       /* background-color: yellow; */
       flex: 1;
@@ -69,7 +74,7 @@
       display: flex;
       width: 100%;
     }
-    
+
     .control {
       /* background: blue; */
       width: 100%;
@@ -79,18 +84,18 @@
       gap: 16px;
       align-items: center;
     }
-    
+
     .button {
       height: 64px;
       width: 64px;
       background-image: url("assets/button-left-pashmina.png");
       background-size: 100% 100%;
     }
-    
+
     .right {
       transform: rotate(180deg);
     }
-    
+
     .poem {
       flex: 1;
       /* background: red; */
@@ -100,27 +105,26 @@
       align-items: center;
       justify-content: center;
     }
-    
+
     #text {
       background: yellow;
     }
-    
+
     @font-face {
       font-family: urdu;
       src: url("../fonts/nn.ttf");
     }
-    
-    * {
-      
-    }
-    
-    p {
+
+    * {}
+
+    p,
+    span {
       font-family: urdu;
     }
   </style>
-  
+
   <script>
-  
+
     phone.style.height = window.innerHeight + "px"
     let poetry = [{
       "couplets": [
@@ -262,14 +266,22 @@
         ["کہتے ہو کہ ہم تو مسافر ہیں، اک جگہ کیسے رہیں", "نجانے بنائے ہوں گے تم نے عشق محروم کتنے"]
       ]
     }]
-    
+
+    function toUrduNumerals(input) {
+      const map = {
+        '0': '۰', '1': '۱', '2': '۲', '3': '۳', '4': '۴',
+        '5': '۵', '6': '۶', '7': '۷', '8': '۸', '9': '۹'
+      };
+      return String(input).replace(/\d/g, d => map[d]);
+    }
+
     let poemIndex = 0
     let pageIndex = 0
     const PAGE_SIZE = 5
-    
+
     const container = document.querySelector("#poem-container")
     const indicator = document.querySelector(".control span")
-    
+
     function getPages(couplets) {
       const pages = []
       for (let i = 0; i < couplets.length; i += PAGE_SIZE) {
@@ -277,33 +289,33 @@
       }
       return pages
     }
-    
+
     function render() {
       const poem = poetry[poemIndex].couplets
       const pages = getPages(poem)
       const page = pages[pageIndex]
-      
+
       container.innerHTML = ""
-      
+
       const wrapper = document.createElement("div")
       wrapper.className = "poem"
-      
-      
+
+
       page.forEach(([l1, l2]) => {
         const p = document.createElement("p")
         p.innerHTML = `${l1}<br/>${l2}`
         wrapper.appendChild(p)
       })
-      
+
       container.appendChild(wrapper)
-      
+
       // indicator: "2/15 — 1/3"e
-     // indicator.textContent = `${poemIndex + 1}/${poetry.length} — ${pageIndex + 1}/${pages.length}`
-     
-     indicator.textContent =
-  `${poemIndex + 1}/${poetry.length}`
+      // indicator.textContent = `${poemIndex + 1}/${poetry.length} — ${pageIndex + 1}/${pages.length}`
+
+      indicator.textContent =
+        `${toUrduNumerals(poetry.length)}/${toUrduNumerals(poemIndex + 1)}`
     }
-    
+
     // LEFT BUTTON
     document.querySelector(".button").onclick = () => {
       if (pageIndex > 0) {
@@ -315,11 +327,11 @@
       }
       render()
     }
-    
+
     // RIGHT BUTTON
     document.querySelector(".button.right").onclick = () => {
       const pages = getPages(poetry[poemIndex].couplets)
-      
+
       if (pageIndex < pages.length - 1) {
         pageIndex++
       } else {
@@ -328,7 +340,7 @@
       }
       render()
     }
-    
+
     render()
   </script>
 </body>
