@@ -5,86 +5,168 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Long Records</title>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.png">
+    
+    <style>
+        @font-face {
+            font-family: urdu;
+            src: url("../fonts/nn.ttf");
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .title {
+            font-size: 32px;
+            margin-top: 10px;
+        }
+        
+        .author {
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .poetry {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            width: 100%;
+        }
+        
+        .couplet {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .line {
+            display: flex;
+            justify-content: space-between;
+            direction: rtl;
+            white-space: nowrap;
+            
+            font-family: urdu;
+            font-size: 16px;
+            
+            
+            padding: 0 8px;
+        }
+        
+        .word {
+            flex: 0 0 auto;
+
+        }
+        
+        hr {
+            width: 100%;
+            margin: 24px 0;
+        }
+    </style>
 </head>
 
-<style>
-    @font-face {
-        font-family: urdu;
-        src: url("../fonts/nn.ttf");
-    }
-
-    * {
-
-        line-height-step: 12px;
-    }
-
-    p {
-        font-family: urdu;
-    }
-
-    .normal-font * {
-        font-family: Arial, sans-serif;
-    }
-
-    button {
-        font-family: urdu;
-        font-size: 18px;
-        padding: 10px 20px;
-        border: 1px solid #ccc;
-        background-color: #fff;
-        cursor: pointer;
-        margin: 10px auto;
-        display: block;
-        border-radius: 5px;
-    }
-
-    button:hover {
-        background-color: #f0f0f0;
-    }
-</style>
-
 <body>
+    
     <div class="container">
         <img src="../logo.png" alt="LOGO" width="60%" onclick="window.location.href = '../'">
+        
         <hr>
+        
         <div class="title">
             Silsila e Shoq
         </div>
+        
         <div class="author">
             Poet : Yaver Javid
-            <br />
+            <br>
             شاعر: یاور جاوید
         </div>
     </div>
-
+    
     <script src="poems.js"></script>
+    
     <script>
-        let html = "";
-
-        for (let i = 0; i < poetry.length; i++) {
-            let poem = poetry[i].couplets;
-
-            html += "<hr><div class='poetry content'>"
-
-            for (let j = 0; j < poem.length; j++) {
-                const couplet = poem[j];
-
-                let [line1, line2] = couplet;
-
-                html += `<p>${line1} <br> ${line2}</p>`
-
-
+        let html = ""
+        
+        function toWordsHTML(line) {
+            let words = line.trim().split(" ")
+            
+            let html = ""
+            
+            for (let i = 0; i < words.length; i++) {
+                html += `<div class="word">${words[i]}</div>`
             }
-
-            html += "</div>"
-
+            
+            return html
         }
+        
+        for (let i = 0; i < poetry.length; i++) {
+            let poem = poetry[i].couplets
+            
+            html += `
+                <hr>
+                <div class="poetry">
+            `
+            
+            for (let j = 0; j < poem.length; j++) {
+                const couplet = poem[j]
+                
+                let [line1, line2] = couplet
+                
+                html += `
+                    <div class="couplet">
+                        <div class="line">
+                            ${toWordsHTML(line1)}
+                        </div>
 
+                        <div class="line">
+                            ${toWordsHTML(line2)}
+                        </div>
+                    </div>
+                `
+            }
+            
+            html += `</div>`
+        }
+        
         document.querySelector(".container").innerHTML += html
-
+        
+        const poems = document.querySelectorAll(".poetry")
+        
+        for (const poem of poems) {
+            const lines = [...poem.querySelectorAll(".line")]
+            
+            let max = 0
+            
+            for (const line of lines) {
+                line.style.width = "max-content"
+                
+                max = Math.max(
+                    max,
+                    line.getBoundingClientRect().width
+                )
+            }
+            
+            for (const line of lines) {
+                line.style.width = `${max}px`
+            }
+        }
     </script>
+    
 </body>
 
 </html>
