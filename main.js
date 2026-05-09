@@ -13,3 +13,13 @@ for (let i = 0; i < articles.length; i++) {
          window.location.href = URL
     }
 }
+
+
+
+
+
+
+
+
+
+
