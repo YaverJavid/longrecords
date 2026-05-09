@@ -5,41 +5,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Long Records</title>
-    
+
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/x-icon" href="../favicon.png">
-    
+
     <style>
         @font-face {
             font-family: urdu;
             src: url("../fonts/nn.ttf");
         }
-        
+
         * {
             box-sizing: border-box;
         }
-        
+
         body {
             margin: 0;
             padding: 20px;
         }
-        
+
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        
+
         .title {
             font-size: 32px;
             margin-top: 10px;
         }
-        
+
         .author {
             margin-top: 10px;
             text-align: center;
         }
-        
+
         .poetry {
             display: flex;
             flex-direction: column;
@@ -47,86 +47,107 @@
             gap: 28px;
             width: 100%;
         }
-        
+
         .couplet {
             display: flex;
             flex-direction: column;
             gap: 8px;
         }
-        
+
         .line {
             display: flex;
             justify-content: space-between;
             direction: rtl;
             white-space: nowrap;
-            
+
             font-family: urdu;
             font-size: 16px;
-            
-            
+
+
             padding: 0 8px;
         }
-        
+
         .word {
             flex: 0 0 auto;
+            user-select: none;
 
         }
-        
+
         hr {
             width: 100%;
             margin: 24px 0;
+        }
+
+        .copy-button {
+            align-self: last baseline;
+            background-color: rgb(208, 208, 208);
+            border-radius: 16px;
+            padding: 6px 16px;
+            user-select: none;
+            cursor: pointer;
+            transition: 500ms;
+        }
+
+        .copy-button:hover {
+            background-color: gray;
         }
     </style>
 </head>
 
 <body>
-    
+
     <div class="container">
         <img src="../logo.png" alt="LOGO" width="60%" onclick="window.location.href = '../'">
-        
+
         <hr>
-        
+
         <div class="title">
             Silsila e Shoq
         </div>
-        
+
         <div class="author">
             Poet : Yaver Javid
             <br>
             شاعر: یاور جاوید
         </div>
+        <div class="copy-button" id="copy-all" onclick="copyAll()">Copy All</div>
     </div>
-    
+
     <script src="poems.js"></script>
-    
+
     <script>
+
+        let poemsContent = []
         let html = ""
-        
+
         function toWordsHTML(line) {
             let words = line.trim().split(" ")
-            
+
             let html = ""
-            
+
             for (let i = 0; i < words.length; i++) {
                 html += `<div class="word">${words[i]}</div>`
             }
-            
+
             return html
         }
-        
+
         for (let i = 0; i < poetry.length; i++) {
             let poem = poetry[i].couplets
-            
+
             html += `
                 <hr>
+                <div class="copy-button" onclick="copy(${i}, this)">Copy</div>
                 <div class="poetry">
             `
-            
+
+            let content = ""
+
             for (let j = 0; j < poem.length; j++) {
                 const couplet = poem[j]
-                
+
                 let [line1, line2] = couplet
-                
+
                 html += `
                     <div class="couplet">
                         <div class="line">
@@ -138,35 +159,77 @@
                         </div>
                     </div>
                 `
+
+                content += `${line1}\n${line2}\n`
             }
-            
+
+            poemsContent.push(content)
+
             html += `</div>`
         }
-        
+
         document.querySelector(".container").innerHTML += html
-        
+
         const poems = document.querySelectorAll(".poetry")
-        
+
         for (const poem of poems) {
             const lines = [...poem.querySelectorAll(".line")]
-            
+
             let max = 0
-            
+
             for (const line of lines) {
                 line.style.width = "max-content"
-                
+
                 max = Math.max(
                     max,
                     line.getBoundingClientRect().width
                 )
             }
-            
+
             for (const line of lines) {
                 line.style.width = `${max}px`
             }
         }
+
+
+        async function copy(i, self) {
+            const originalText = self.textContent
+
+            try {
+                const content = poemsContent[i]
+                await navigator.clipboard.writeText(content)
+
+                self.textContent = "Copied"
+            } catch (err) {
+                self.textContent = "Failed"
+                console.error(err)
+            }
+
+            setTimeout(() => {
+                self.textContent = originalText
+            }, 800)
+        }
+
+        async function copyAll() {
+            let self = document.getElementById("copy-all");
+            const originalText = self.textContent
+
+            try {
+                const content = poemsContent.join("\n\n\n")
+                await navigator.clipboard.writeText(content)
+
+                self.textContent = "Copied"
+            } catch (err) {
+                self.textContent = "Failed"
+                console.error(err)
+            }
+
+            setTimeout(() => {
+                self.textContent = originalText
+            }, 800)
+        }
     </script>
-    
+
 </body>
 
 </html>
