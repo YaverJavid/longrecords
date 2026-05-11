@@ -25,8 +25,9 @@ Isn’t it perfect for man’s short reprieve?
 Is the gloom in the blue-bloom days nostalgia,
 Or is it the three-lived man’s ancient crave?
 Very thick is the static man’s sheath;
-Of no use is the strong man’s heave.`,
-  
+Of no use is the strong man’s heave.
+Wild tulips from the very soil I grew from
+Like the day of gloom and the Eid day's eve.`,
 ]
 
 for (let i = 0; i < pages.length; i++) {
