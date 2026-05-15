@@ -2,6 +2,18 @@ let poetry = []
 
 
 const pages = [
+  `The heavy bandwagon with trumpet lead,
+Taken down the street by one finest steed.
+The loud blare, blast, or fanfare—
+Call it a toot amidst the drum snare.
+As the past goes, the silent it goes;
+Sometimes I am alone with my quiet and woes.
+Some past sorrows, some future fears,
+Half— unexpected gloom without tears.
+Someday, when the bandwagon’ s sounds dim,
+It’ s flowers, perfume, and rhythm.
+The joy of today and tomorrow’ s toy
+Exists— even the unexplained joy.`,
   `Until my land isn't free how can i be at peace?
 A high ache strikes my heart without any ease
 Everytime I imagine my own life's dream
