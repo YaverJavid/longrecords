@@ -12,7 +12,7 @@ Some past sorrows, some future fears,
 Half— unexpected gloom without tears.
 Someday, when the bandwagon’ s sounds dim,
 It’s flowers, perfume, and rhythm.
-The joy of today and tomorrow’ s toy
+The joy of today and tomorrow’s toy
 Exists— even the unexplained joy.`,
   `Until my land isn't free how can i be at peace?
 A high ache strikes my heart without any ease
