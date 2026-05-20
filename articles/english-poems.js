@@ -7,9 +7,9 @@ Taken down the street by one finest steed.
 The loud blare, blast, or fanfare—
 Call it a toot amidst the drum snare.
 As past it goes, the silent it goes;
-Sometimes I am alone with my quiet and woes.
+Then I am alone with my quiet and woes.
 Some past sorrows, some future fears,
-Half— unexpected gloom without tears.
+Half— unexplained gloom without tears.
 Someday, when the bandwagon’ s sounds dim,
 It’s flowers, perfume, and rhythm.
 The joy of today and tomorrow’s toy
