@@ -39,7 +39,21 @@ Or is it the three-lived man’s ancient crave?
 Very thick is the static man’s sheath;
 Of no use is the strong man’s heave.
 Wild tulips from the very soil I grew from
-Like the day of gloom and the Eid day's eve.`
+Like the day of gloom and the Eid day's eve.`,
+`Mystic import by that Alexandrian Jew Philo
+Changed the clear words of our every folio
+Outnumbered in their nation: the holy company
+Shunned every relation with the great imbroglio
+You ask me what the worship is all about?
+The ceremonious show for the total ossequio
+How can the worship be for a servant?
+Unsanctioned, failable, undeserving sprito
+Via the representatives came the benedicto
+With the promised one ended the great fluvio 
+One after another prophets proved the religion 
+Some established sub sole paradiso e inferno
+The Law lays a veil in the evil man's heart 
+The clear lamp shines to them a flashing lampo`
 ]
 
 for (let i = 0; i < pages.length; i++) {
