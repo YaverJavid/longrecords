@@ -327,32 +327,33 @@ const pages = [
 
 
 for (let i = 0; i < pages.length; i++) {
-    let poem = {
-        couplets: [
-            []
-        ]
-    }
-    
-    let lines = pages[i].split("\n")
+    const poem = { couplets: [[]] }
+    const lines = pages[i]
+        .split("\n")
+        .map(s => s.trim())
     
     if (lines.includes("")) {
-        for (let j = 0; j < lines.length; j++) {
-            if (lines[j] == "") {
-                poem.couplets.push([])
+        for (const line of lines) {
+            if (line === "") {
+                if (poem.couplets[poem.couplets.length - 1].length > 0) {
+                    poem.couplets.push([])
+                }
+                continue
             }
-            poem.couplets[poem.couplets.length - 1].push(lines[j])
+            poem.couplets[poem.couplets.length - 1].push(line)
         }
     } else {
-        for (let j = 0; j < lines.length; j++) {
-            if (poem.couplets[poem.couplets.length - 1].length == 2) {
+        for (const line of lines) {
+            if (poem.couplets[poem.couplets.length - 1].length === 2) {
                 poem.couplets.push([])
             }
-            poem.couplets[poem.couplets.length - 1].push(lines[j])
+            poem.couplets[poem.couplets.length - 1].push(line)
         }
     }
-    
-    
+
+    if (poem.couplets[poem.couplets.length - 1].length === 0) {
+        poem.couplets.pop()
+    }
+
     poetry.unshift(poem)
 }
-
-console.log(poetry)
