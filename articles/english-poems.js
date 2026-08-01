@@ -53,7 +53,17 @@ With the promised one ended the great fluvio
 One after another prophets proved the religion 
 Some established sub sole paradiso e inferno
 The Law lays a veil in the evil man's heart 
-The clear lamp shines to them a flashing lampo`
+The clear lamp shines to them a flashing lampo`,
+`Oh the pale white boy moonstruck, flowerstruck
+And the glory glory days all used up
+The old wore out track leads to Rome
+The dream 's every plot all lead to the home
+I am all familiar with the long time 's wretch
+But the Poet 's pain did dilute over a stretch
+Now the shortness all manifest of the stay
+A little below 3 months or just 3 months to say
+Hope the stay will all exhaust up in this sweet rain
+And flowers & poetry, its rhyme & refrain`
 ]
 
 for (let i = 0; i < pages.length; i++) {
