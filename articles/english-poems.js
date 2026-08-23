@@ -64,7 +64,7 @@ Now the shortness all manifest of the stay
 A little below 3 months or just 3 months to say
 Hope the stay will all exhaust up in this sweet rain
 And flowers & poetry, its rhyme & refrain`,
-`Your eyes sure cast a spell
+`Your eyes sure do cast a spell
 To make a fair spoil's sell
 Not today, I repeat, not today
 What will happen, who can tell?
