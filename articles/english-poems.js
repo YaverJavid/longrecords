@@ -64,7 +64,7 @@ Now the shortness all manifest of the stay
 A little below 3 months or just 3 months to say
 Hope the stay will all exhaust up in this sweet rain
 And flowers & poetry, its rhyme & refrain`,
-`Your eyes sure cast a spell
+`Your eyes sure do cast a spell
 To make a fair spoil's sell
 Not today, I repeat, not today
 What will happen, who can tell?
@@ -72,7 +72,6 @@ I know the sunny morning's scene
 An ornament to it, you will fit well
 The gold chain on the fair chest
 Many hues apart, contrast almost parallel
-You could be a fairy or an angel
 Or a femme fatale for my quell`
 ]
 
