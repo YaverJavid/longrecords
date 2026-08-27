@@ -68,7 +68,7 @@ And flowers & poetry, its rhyme & refrain`,
 To make a fair spoil's sell
 Not today, I repeat, not today
 What will happen, who can tell?
-Do you know the sunny morning's scene
+Do you know the sunny morning's scene?
 An ornament to it, you will fit well
 The gold chain on the fair chest
 Many hues apart, contrast almost parallel
