@@ -67,7 +67,7 @@ And flowers & poetry, its rhyme & refrain`,
 `Your eyes sure do cast a spell
 To make a fair spoil's sell
 Not today, I repeat, not today
-What will happen, who can tell?
+What will happen, I can't tell?
 Do you know the sunny morning's scene?
 An ornament to it, you will fit well
 The gold chain on the fair chest
