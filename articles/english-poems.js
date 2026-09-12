@@ -73,26 +73,56 @@ An ornament to it, you will fit well
 The gold chain on the fair chest
 Many hues apart, contrast almost parallel
 You could be a fairy or an angel
-Or a femme fatale for my quell`
+Or a femme fatale for my quell`,
+`Take this Moonshine and make it wine
+A single drop of blood stains it wine-red
+Don't give to my heart love's any sign
+A single drop of blood stains it wine-red
+
+Come at me without anything in mind
+I am but too familiar with this kind
+I am but to catch them with design 
+A single drop of blood stains it wine-red
+
+I know the weight of this tiny smidge 
+I have burn this scary lovely bridge
+I have to go, it's already past nine
+A single drop of blood stains it wine-red
+
+You decive yourself, now you do others
+Is that why you come out of mothers
+Taking a white coat to the malign line 
+A single drop of blood stains it wine-red`
 ]
 
 for (let i = 0; i < pages.length; i++) {
-  let poem = {
-    couplets: [
-      []
-    ]
-  }
-  
-  let lines = pages[i].split("\n")
-  for (let j = 0; j < lines.length; j++) {
-    if (poem.couplets[poem.couplets.length - 1].length == 2) {
-      poem.couplets.push([])
+    const poem = { couplets: [[]] }
+    const lines = pages[i]
+        .split("\n")
+        .map(s => s.trim())
+    
+    if (lines.includes("")) {
+        for (const line of lines) {
+            if (line === "") {
+                if (poem.couplets[poem.couplets.length - 1].length > 0) {
+                    poem.couplets.push([])
+                }
+                continue
+            }
+            poem.couplets[poem.couplets.length - 1].push(line)
+        }
+    } else {
+        for (const line of lines) {
+            if (poem.couplets[poem.couplets.length - 1].length === 2) {
+                poem.couplets.push([])
+            }
+            poem.couplets[poem.couplets.length - 1].push(line)
+        }
     }
-    poem.couplets[poem.couplets.length - 1].push(lines[j])
-  }
-  
-  
-  poetry.unshift(poem)
-}
 
-// e
+    if (poem.couplets[poem.couplets.length - 1].length === 0) {
+        poem.couplets.pop()
+    }
+
+    poetry.unshift(poem)
+}
