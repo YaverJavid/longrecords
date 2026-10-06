@@ -92,7 +92,24 @@ A single drop of blood stains it wine-red
 You decive yourself, now you do others
 Is that why you come out of mothers
 Taking a white coat to the malign line 
-A single drop of blood stains it wine-red`
+A single drop of blood stains it wine-red`,
+`I saw her, as young I was; or a little more,
+with the announcer, for her coming's mention;
+
+Then, for years, our exchange was numbered,
+that's all I know, till the first chapter's conclusion;
+
+And the little me, impish, deadpan, for a ghazale,
+her horns through my heart; then, my isolation;
+
+Healer, rescuer, her role was;
+her eyes, a symbol of fascination!
+
+This line of love, could be punctuated abrupt;
+no need, for it's completion!!!
+
+I, too, fell for a face;
+adores the unadored in nightly adoration`
 ]
 
 for (let i = 0; i < pages.length; i++) {
