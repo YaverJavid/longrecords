@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Long Records | Kashmiri Transliterator</title>
+  <style>
+    @font-face {
+      font-family: urdu;
+      src: url("../fonts/notou.ttf");
+    }
+    
+    :root {
+      color-scheme: light;
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --text: #000000;
+      --muted: #555555;
+      --border: #000000;
+      --soft: #f2f2f2;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.6 Arial, Helvetica, sans-serif;
+    }
+    
+    main {
+      width: min(1100px, calc(100% - 36px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+    
+    header {
+      border-bottom: 4px solid var(--border);
+      padding-bottom: 26px;
+      margin-bottom: 28px;
+    }
+    
+    .eyebrow {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    
+    h1 {
+      font-size: clamp(32px, 6vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin: 0 0 14px;
+      font-weight: 900;
+    }
+    
+    header p {
+      max-width: 650px;
+      margin: 0;
+      color: var(--muted);
+    }
+    
+    .direction-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+    
+    label,
+    .label {
+      font-weight: 800;
+      font-size: 13px;
+    }
+    
+    select {
+      width: min(100%, 300px);
+      border: 3px solid var(--border);
+      border-radius: 0;
+      background: #fff;
+      color: #000;
+      padding: 12px;
+      font: inherit;
+      font-weight: 700;
+    }
+    
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    
+    .card {
+      min-width: 0;
+      padding: 22px;
+      background: var(--surface);
+      border: 3px solid var(--border);
+      border-radius: 0;
+    }
+    
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    
+    .card-head label {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .meta {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+    
+    textarea {
+      display: block;
+      width: 100%;
+      min-height: 250px;
+      resize: vertical;
+      border: 3px solid var(--border);
+      border-radius: 0;
+      background: #fff;
+      color: #000;
+      padding: 16px;
+      font: 16px/1.8 "Courier New", monospace;
+      outline: none;
+    }
+    
+    textarea:focus,
+    select:focus {
+      outline: 3px solid #777;
+      outline-offset: 3px;
+    }
+    
+    #output {
+      font-family: urdu;
+      font-size: 9px;
+      line-height: 2;
+      direction: rtl;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+    
+    .options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      margin-top: 18px;
+    }
+    
+    .check {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    
+    input[type="checkbox"] {
+      width: 17px;
+      height: 17px;
+      margin: 2px 0 0;
+      accent-color: #000;
+    }
+    
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    
+    button {
+      min-height: 43px;
+      padding: 10px 15px;
+      border: 3px solid #000;
+      border-radius: 0;
+      background: #fff;
+      color: #000;
+      font: 800 13px Arial, Helvetica, sans-serif;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+    }
+    
+    button:hover {
+      background: #000;
+      color: #fff;
+    }
+    
+    button:active {
+      transform: translateY(1px);
+    }
+    
+    button.primary {
+      background: #000;
+      color: #fff;
+    }
+    
+    button.primary:hover {
+      background: #fff;
+      color: #000;
+    }
+    
+    .status {
+      min-height: 24px;
+      margin-top: 14px;
+      color: #333;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    
+    .normal {
+      color: black;
+      text-decoration: none;
+    }
+    
+    .bottom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 22px;
+    }
+    
+    .note {
+      padding: 18px;
+      border: 3px solid #000;
+      background: var(--soft);
+      font-size: 13px;
+    }
+    
+    .note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    footer {
+      border-top: 3px solid #000;
+      margin-top: 28px;
+      padding-top: 15px;
+      color: #555;
+      font-size: 12px;
+    }
+    
+    @media (max-width: 760px) {
+      main {
+        width: calc(100% - 24px);
+        padding: 28px 0;
+      }
+      
+      .layout,
+      .bottom {
+        grid-template-columns: 1fr;
+      }
+      
+      .card {
+        padding: 16px;
+      }
+      
+      textarea {
+        min-height: 190px;
+      }
+      
+      #output {
+        font-size: 25px;
+      }
+      
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="eyebrow">Long Records Apps/ Kashmiri</div>
+      <h1><a href="../index.html" class="normal">Long Records</a></h1>
+      <h3>Kashmiri Transliterator.</h3>
+      <p>Convert between Latin-script Kashmiri and Perso-Arabic script. Simple interface, two directions, no server required.</p>
+      
+      <div class="direction-row">
+        <label for="direction">CONVERSION MODE</label>
+        <select id="direction">
+          <option value="to">Latin → Perso-Arabic</option>
+          <option value="from">Perso-Arabic → Latin</option>
+        </select>
+      </div>
+    </header>
+    
+    <section class="layout">
+      <div class="card">
+        <div class="card-head">
+          <label for="source" id="sourceLabel">Latin Input</label>
+          <span class="meta" id="inputCount">0 CHARACTERS</span>
+        </div>
+        
+        <textarea id="source" spellcheck="false" placeholder="Type or paste text...">Chu bas akh maaz bon khooné jigar te kyaah</textarea>
+        
+        <div class="options" id="options">
+          <label class="check">
+            <input id="removeMiddle" type="checkbox">
+            <span>Remove zabar, zer and pesh in the middle of words</span>
+          </label>
+          
+          <label class="check">
+            <input id="keepCase" type="checkbox">
+            <span>Case-sensitive input</span>
+          </label>
+        </div>
+        
+        <div class="actions">
+          <button class="primary" id="convert">CONVERT</button>
+          <button id="sample">LOAD SAMPLE</button>
+          <button id="clear">CLEAR</button>
+        </div>
+      </div>
+      
+      <div class="card">
+        <div class="card-head">
+          <label for="output" id="outputLabel">Perso-Arabic Output</label>
+          <span class="meta" id="outputCount">0 CHARACTERS</span>
+        </div>
+        
+        <textarea id="output" readonly dir="rtl" lang="ks" placeholder="یہاں نتیجہ ظاہر ہوگا" aria-label="Transliterated output"></textarea>
+        
+        <div class="actions">
+          <button class="primary" id="copy">COPY OUTPUT</button>
+          <button id="selectOutput">SELECT OUTPUT</button>
+        </div>
+        
+        <div class="status" id="status" role="status" aria-live="polite">
+          Ready. Type to convert.
+        </div>
+      </div>
+    </section>
+    
+    <section class="bottom">
+      <div class="note">
+        <strong>01 / Matching Order</strong>
+        Trigraphs are checked before digraphs, then monographs. The longest available match wins.
+      </div>
+      
+      <div class="note">
+        <strong>02 / Word Position</strong>
+        Front mappings apply at the beginning of a word and end mappings at the end. Missing positional mappings fall back to the main table.
+      </div>
+    </section>
+    
+    <footer>
+      Scheme: Kashmir Orthography Project
+    </footer>
+  </main>
+  
+  <script>
+    let main = {
+      monographs: {
+        "a": "َ",
+        "ae": "ٟ",
+        "ä": "ی",
+        "æ": "ٔ",
+        "b": "ب",
+        "d": "د",
+        "e": "ٕ",
+        "é": "ی",
+        "ë": "یٚ",
+        "f": "ف",
+        "g": "گ",
+        "h": "ہ",
+        "i": "ِ",
+        "ï": "َی",
+        "j": "ج",
+        "k": "ک",
+        "l": "ل",
+        "m": "م",
+        "n": "ن",
+        "o": "و",
+        "ö": "وی",
+        "p": "پ",
+        "q": "ق",
+        "r": "ر",
+        "s": "س",
+        "t": "ت",
+        "u": "ُ",
+        "ü": "یو",
+        "v": "و",
+        "w": "و",
+        "y": "ی",
+        "z": "ز",
+        "'": "ؠ‌",
+        "c": "ۄ",
+        ",": "،",
+      //  "^":, "ٛ"
+        
+      },
+      digraphs: {
+        "aa": "ا",
+        "æa": "ٲ",
+        "ee": "یٖ",
+        "oo": "وٗ",
+        "oa": "وٚ",
+        "cx": "ژ",
+        "th": "تھ",
+        "tt": "ٹ",
+        "dd": "ڈ",
+        "pf": "پھ",
+        "kh": "کھ",
+        "ch": "چھ",
+        "'n": "نٛ",
+        "'y": "ؠ‌",
+        "sh": "ش",
+        "co": "ۄا",
+      },
+      trigraphs: {
+        "cxh": "ژھ",
+        "tth": "ٹھ",
+        "eee": "ٕی",
+        "tch": "چ",
+        "sch": "ش"
+      }
+    }
+    
+    let front = {
+      monographs: {
+        "a": "ا",
+        "ä": "ای",
+        "æ": "أ",
+        "e": "اِ",
+        "é": "ای",
+        "ë": "ایٚ",
+        "i": "اِ",
+        "ï": "اَے",
+        "o": "او",
+        "ö": "اوی",
+        "u": "اِ",
+        "ü": "یُو"
+      },
+      digraphs: {
+        "aa": "آ",
+        "æa": "ٲ",
+        "ee": "ایٖ",
+        "oo": "اوٗ",
+        "oa": "ۆ"
+      },
+      trigraphs: {}
+    }
+    
+    let end = {
+      monographs: {
+        "ä": "ے",
+        "é": "َے",
+        "ë": "ےٚ",
+        "ö": "اوے",
+        "a": "ا",
+        "i": "ہِ",
+        "e": "ہٕ",
+        "u": "ہُ",
+        "æ": "ۂ"
+      },
+      digraphs: {
+        "'n": "ں",
+        "ee": "ی"
+      },
+      trigraphs: {
+        
+        
+      }
+    }
+    
+    const marks = new Set(["َ", "ِ", "ُ"]);
+    
+    const tiers = [
+      ["trigraphs", main.trigraphs],
+      ["digraphs", main.digraphs],
+      ["monographs", main.monographs]
+    ];
+    
+    const source = document.getElementById("source");
+    const output = document.getElementById("output");
+    const removeMiddle = document.getElementById("removeMiddle");
+    const keepCase = document.getElementById("keepCase");
+    const status = document.getElementById("status");
+    const direction = document.getElementById("direction");
+    
+    function startsAt(text, key, index) {
+      return text.slice(index, index + key.length) === key;
+    }
+    
+    function to(text, removeMiddleVowels = false, caseSensitive = false) {
+      const chars = Array.from(
+        caseSensitive ? text : text.toLowerCase()
+      );
+      
+      let result = "";
+      let i = 0;
+      
+      while (i < chars.length) {
+        if (/\s/.test(chars[i])) {
+          result += chars[i++];
+          continue;
+        }
+        
+        let wordEnd = i;
+        
+        while (
+          wordEnd < chars.length &&
+          !/\s/.test(chars[wordEnd])
+        ) {
+          wordEnd++;
+        }
+        
+        const word = chars.slice(i, wordEnd).join("");
+        let pos = 0;
+        let converted = "";
+        
+        while (pos < word.length) {
+          let match = null;
+          
+          for (const [type, table] of tiers) {
+            const keys = Object.keys(table).sort(
+              (a, b) => b.length - a.length
+            );
+            
+            for (const key of keys) {
+              if (startsAt(word, key, pos)) {
+                match = {
+                  key,
+                  type,
+                  glyph: table[key]
+                };
+                break;
+              }
+            }
+            
+            if (match) break;
+          }
+          
+          if (!match) {
+            converted += word[pos++];
+            continue;
+          }
+          
+          const isFront = pos === 0;
+          const isEnd = pos + match.key.length === word.length;
+          
+          const positionalTable = isFront ?
+            front[match.type] :
+            isEnd ?
+            end[match.type] :
+            null;
+          
+          let glyph =
+            positionalTable &&
+            positionalTable[match.key] !== undefined ?
+            positionalTable[match.key] :
+            match.glyph;
+          
+          if (removeMiddleVowels && !isFront && !isEnd) {
+            glyph = Array.from(glyph)
+              .filter(char => !marks.has(char))
+              .join("");
+          }
+          
+          converted += glyph;
+          pos += match.key.length;
+        }
+        
+        result += converted;
+        i = wordEnd;
+      }
+      
+      return result;
+    }
+    
+    function from(text, caseSensitive = false) {
+      const reverse = new Map();
+      
+      const tables = [
+        main.trigraphs,
+        main.digraphs,
+        main.monographs,
+        front.trigraphs,
+        front.digraphs,
+        front.monographs,
+        end.trigraphs,
+        end.digraphs,
+        end.monographs
+      ];
+      
+      for (const table of tables) {
+        for (const [latin, arabic] of Object.entries(table)) {
+          if (!reverse.has(arabic)) {
+            reverse.set(arabic, latin);
+          }
+        }
+      }
+      
+      const keys = Array.from(reverse.keys()).sort(
+        (a, b) => b.length - a.length
+      );
+      
+      let result = "";
+      let i = 0;
+      
+      while (i < text.length) {
+        let matched = false;
+        
+        for (const arabic of keys) {
+          if (text.startsWith(arabic, i)) {
+            result += reverse.get(arabic);
+            i += arabic.length;
+            matched = true;
+            break;
+          }
+        }
+        
+        if (!matched) {
+          result += text[i++];
+        }
+      }
+      
+      return caseSensitive ? result : result.toLowerCase();
+    }
+    
+    function update() {
+      const reverseMode = direction.value === "from";
+      
+      const value = reverseMode ?
+        from(source.value, keepCase.checked) :
+        to(
+          source.value,
+          removeMiddle.checked,
+          keepCase.checked
+        );
+      
+      output.value = value;
+      
+      document.getElementById("inputCount").textContent =
+        `${Array.from(source.value).length} CHARACTERS`;
+      
+      document.getElementById("outputCount").textContent =
+        `${Array.from(value).length} CHARACTERS`;
+      
+      status.textContent = reverseMode ?
+        "Reverse conversion complete. Ambiguous mappings may not be perfectly reversible." :
+        "Conversion complete. Processed locally in your browser.";
+    }
+    
+    function syncDirection() {
+      const reverseMode = direction.value === "from";
+      
+      document.getElementById("sourceLabel").textContent =
+        reverseMode ? "Perso-Arabic Input" : "Latin Input";
+      
+      document.getElementById("outputLabel").textContent =
+        reverseMode ? "Latin Output" : "Perso-Arabic Output";
+      
+      source.dir = reverseMode ? "rtl" : "ltr";
+      source.lang = reverseMode ? "ks" : "en";
+      
+      output.dir = reverseMode ? "ltr" : "rtl";
+      output.lang = reverseMode ? "en" : "ks";
+      
+      source.placeholder = reverseMode ?
+        "متن یہاں لکھیں یا پیسٹ کریں..." :
+        "Type or paste text...";
+      
+      document.getElementById("options").style.display =
+        reverseMode ? "none" : "flex";
+      
+      update();
+    }
+    
+    source.addEventListener("input", update);
+    removeMiddle.addEventListener("change", update);
+    keepCase.addEventListener("change", update);
+    direction.addEventListener("change", syncDirection);
+    
+    document.getElementById("convert").addEventListener(
+      "click",
+      update
+    );
+    
+    document.getElementById("sample").addEventListener("click", () => {
+      source.value = direction.value === "from" ?
+        "کٲشُر" :
+        "Chu bas akh maaz bon khooné jigar te kyaa";
+      
+      update();
+      source.focus();
+    });
+    
+    document.getElementById("clear").addEventListener("click", () => {
+      source.value = "";
+      update();
+      source.focus();
+    });
+    
+    document.getElementById("copy").addEventListener(
+      "click",
+      async () => {
+        try {
+          await navigator.clipboard.writeText(output.value);
+          status.textContent = "Output copied to clipboard.";
+        } catch {
+          output.focus();
+          output.select();
+          status.textContent =
+            "Output selected. Copy it with Ctrl+C or Cmd+C.";
+        }
+      }
+    );
+    
+    document.getElementById("selectOutput").addEventListener(
+      "click",
+      () => {
+        output.focus();
+        output.select();
+        status.textContent = "Output selected.";
+      }
+    );
+    
+    syncDirection();
+  </script>
+</body>
+
+</html>
