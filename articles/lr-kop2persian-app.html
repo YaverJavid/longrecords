@@ -149,10 +149,11 @@
     #output {
       font-family: urdu;
       font-size: 9px;
-      line-height: 2;
+      /* line-height: 2; */
       direction: rtl;
       text-align: right;
       overflow-wrap: anywhere;
+      word-spacing: 4px;
     }
     
     .options {
@@ -313,7 +314,7 @@
           <span class="meta" id="inputCount">0 CHARACTERS</span>
         </div>
         
-        <textarea id="source" spellcheck="false" placeholder="Type or paste text...">Chu bas akh maaz bon khooné jigar te kyaah</textarea>
+        <textarea id="source" spellcheck="false" placeholder="Type or paste text..."></textarea>
         
         <div class="options" id="options">
           <label class="check">
@@ -408,7 +409,12 @@
         "'": "ؠ‌",
         "c": "ۄ",
         ",": "،",
-      //  "^":, "ٛ"
+        "^": "ٛ",
+        "?": "؟",
+        "<": "«",
+        ">": "»",
+        "x": "خ",
+        
         
       },
       digraphs: {
@@ -428,13 +434,22 @@
         "'y": "ؠ‌",
         "sh": "ش",
         "co": "ۄا",
+        "aï": "اے",
+        "hx": "ح",
+        "tx": "ط",
+        "zx": "ظ",
+        "zg": "ذ",
+        "gx": "غ",
+        "xx": "ھ",
+        "ex": "ع"
       },
       trigraphs: {
         "cxh": "ژھ",
         "tth": "ٹھ",
         "eee": "ٕی",
         "tch": "چ",
-        "sch": "ش"
+        "sch": "ش",
+        
       }
     }
     
@@ -449,9 +464,10 @@
         "i": "اِ",
         "ï": "اَے",
         "o": "او",
-        "ö": "اوی",
+        "ö": "وی",
         "u": "اِ",
-        "ü": "یُو"
+        "ü": "یُو",
+        
       },
       digraphs: {
         "aa": "آ",
@@ -473,7 +489,8 @@
         "i": "ہِ",
         "e": "ہٕ",
         "u": "ہُ",
-        "æ": "ۂ"
+        "æ": "ۂ",
+        "ö": "وے",
       },
       digraphs: {
         "'n": "ں",
