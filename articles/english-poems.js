@@ -81,11 +81,11 @@ A single drop of blood stains it wine-red
 
 Come at me without anything in mind
 I am but too familiar with this kind
-I am but to catch them with design 
+I am but to catch them by design 
 A single drop of blood stains it wine-red
 
 I know the weight of this tiny smidge 
-I have burn this scary lovely bridge
+I have to burn this scary lovely bridge
 I have to go, it's already past nine
 A single drop of blood stains it wine-red
 
