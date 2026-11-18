@@ -872,11 +872,6 @@
     direction.addEventListener("change", syncDirection);
     middleE.addEventListener("change", update);
     
-    document.getElementById("convert").addEventListener(
-      "click",
-      update
-    );
-    
     document.getElementById("sample").addEventListener("click", () => {
       source.value = direction.value === "from" ?
         "کٲشُر" :
@@ -891,10 +886,11 @@
       update();
       source.focus();
     });
-    
+
     document.getElementById("copy").addEventListener(
       "click",
       async () => {
+        console.log(0)
         try {
           await navigator.clipboard.writeText(output.value);
           status.textContent = "Output copied to clipboard.";
@@ -904,6 +900,7 @@
           
           status.textContent =
             "Output selected. Copy it with Ctrl+C or Cmd+C.";
+            console.log(0)
         }
       }
     );
